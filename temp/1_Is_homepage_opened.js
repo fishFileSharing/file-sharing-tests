@@ -2,6 +2,8 @@ const { Builder, By, until } = require("selenium-webdriver")
 const assert = require("assert")
 
 describe("Open homepage", function () {
+  this.timeout(10000)
+
   let driver
 
   beforeEach(async function () {
