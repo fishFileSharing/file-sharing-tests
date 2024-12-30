@@ -22,12 +22,16 @@ describe("Test in Edge with Authentication Popup", function () {
 
     // Відкриваємо головну сторінку the-internet.herokuapp.com/basic_auth
     await driver.get("http://admin:admin@the-internet.herokuapp.com/basic_auth")
+    // await driver.sleep(1000) // Пауза 1 секунда
 
     // Очікуємо, поки сторінка повністю завантажиться (можна також використовувати інші умови)
     await driver.wait(until.titleIs("The Internet"), 5000)
+    //  await driver.sleep(1000) // Пауза 1 секунда
 
     // Перевіряємо, чи заголовок сторінки містить слово "The Internet"
     const pageTitle = await driver.getTitle()
+    // await driver.sleep(1000) // Пауза 1 секунда
+
     assert(pageTitle.includes("The Internet"))
   })
 })
