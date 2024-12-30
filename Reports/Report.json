@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2024-12-30T18:06:37.875Z",
-    "end": "2024-12-30T18:06:46.186Z",
-    "duration": 8311,
+    "start": "2024-12-30T20:30:06.467Z",
+    "end": "2024-12-30T20:30:14.591Z",
+    "duration": 8124,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,25 +18,25 @@
   },
   "results": [
     {
-      "uuid": "5f0251ba-780d-4522-9e31-cf1645257f96",
+      "uuid": "8a662281-3cbd-4e7e-b643-30d330369692",
       "title": "",
-      "fullFile": "C:\\Users\\pro32\\Documents\\Проект\\Тестовые данные\\file-sharing-tests\\test\\1_select_a_file.js",
-      "file": "\\test\\1_select_a_file.js",
+      "fullFile": "C:\\Users\\viori\\Desktop\\Filesharing\\file-sharing-tests\\test\\1_select_a_pdf.js",
+      "file": "\\test\\1_select_a_pdf.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "e60b65d3-0dcd-4da3-99bf-7eb462d8f96d",
+          "uuid": "b1148682-de69-4979-94a8-5191a3bafca4",
           "title": "Select a file and check if it's name appears on page",
-          "fullFile": "C:\\Users\\pro32\\Documents\\Проект\\Тестовые данные\\file-sharing-tests\\test\\1_select_a_file.js",
-          "file": "\\test\\1_select_a_file.js",
+          "fullFile": "C:\\Users\\viori\\Desktop\\Filesharing\\file-sharing-tests\\test\\1_select_a_pdf.js",
+          "file": "\\test\\1_select_a_pdf.js",
           "beforeHooks": [
             {
               "title": "\"before each\" hook in \"Select a file and check if it's name appears on page\"",
               "fullTitle": "Select a file and check if it's name appears on page \"before each\" hook in \"Select a file and check if it's name appears on page\"",
               "timedOut": false,
-              "duration": 991,
+              "duration": 1129,
               "state": null,
               "speed": null,
               "pass": false,
@@ -45,8 +45,8 @@
               "context": null,
               "code": "// Хук `beforeEach` запускается перед каждым тестом внутри тестового набора.\ndriver = await new Builder().forBrowser(\"MicrosoftEdge\").build();\n// Создаем экземпляр WebDriver для браузера Microsoft Edge.",
               "err": {},
-              "uuid": "a9da033d-cc33-4b3d-b850-b561c508b49f",
-              "parentUUID": "e60b65d3-0dcd-4da3-99bf-7eb462d8f96d",
+              "uuid": "9fbe0295-1401-44a3-b5a6-65b1b3c7be55",
+              "parentUUID": "b1148682-de69-4979-94a8-5191a3bafca4",
               "isHook": true,
               "skipped": false
             }
@@ -56,7 +56,7 @@
               "title": "\"after each\" hook in \"Select a file and check if it's name appears on page\"",
               "fullTitle": "Select a file and check if it's name appears on page \"after each\" hook in \"Select a file and check if it's name appears on page\"",
               "timedOut": false,
-              "duration": 76,
+              "duration": 78,
               "state": null,
               "speed": null,
               "pass": false,
@@ -65,8 +65,8 @@
               "context": null,
               "code": "// Хук `afterEach` запускается после каждого теста внутри тестового набора.\nif (driver) {\n  await driver.quit();\n  // Завершаем работу WebDriver, чтобы закрыть браузер и освободить ресурсы.\n}",
               "err": {},
-              "uuid": "5f7e4c57-6d1a-4962-9b30-673333c1ab4e",
-              "parentUUID": "e60b65d3-0dcd-4da3-99bf-7eb462d8f96d",
+              "uuid": "7c83fd3b-eca6-4855-8e13-e3c1a7f0d603",
+              "parentUUID": "b1148682-de69-4979-94a8-5191a3bafca4",
               "isHook": true,
               "skipped": false
             }
@@ -76,7 +76,7 @@
               "title": "should open https://file-sharing-dev.netlify.app/ and check for title",
               "fullTitle": "Select a file and check if it's name appears on page should open https://file-sharing-dev.netlify.app/ and check for title",
               "timedOut": false,
-              "duration": 7237,
+              "duration": 6909,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -85,20 +85,20 @@
               "context": null,
               "code": "// Описываем отдельный тест с названием: \"Открыть сайт и проверить заголовок\".\nthis.timeout(10000);\n// Устанавливаем тайм-аут для теста в 10 секунд.\nawait driver.get(\"https://file-sharing-dev.netlify.app/\");\n// Загружаем указанную веб-страницу в браузере.\nawait driver.sleep(3000);\n// Ждем 3 секунды, чтобы страница успела полностью загрузиться.\nlet selectFilesInput = await driver.wait(\n  until.elementLocated(By.css('[data-testid=\"select-files-input\"]')),\n  5000\n);\n// Ожидаем, пока на странице появится элемент с CSS-селектором `data-testid=\"select-files-input\"`.\n// Максимальное время ожидания — 5 секунд.\nconst filePath = path.join(__dirname, \"..\", \"test_files\", \"1.pdf\");\n// Создаем абсолютный путь к файлу `1.pdf`, который находится в папке `test_files`.\nselectFilesInput.sendKeys(filePath);\n// Отправляем путь к файлу в поле ввода, чтобы загрузить файл на сайт.\nawait driver.sleep(3000);\n// Ждем 3 секунды, чтобы система успела обработать загрузку файла.\nlet selectedFileName = await driver.wait(\n  until.elementLocated(By.css('[data-testid=\"selected-file-name\"]')),\n  5000\n);\n// Ожидаем, пока на странице появится элемент с CSS-селектором `data-testid=\"selected-file-name\"`.\n// Этот элемент отображает имя загруженного файла.\nlet selectedFileNameText = await selectedFileName.getText();\n// Считываем текст из элемента, который отображает имя файла.\nassert(\n  selectedFileNameText.includes(\"1.pdf\", \"Something is wrong with filename\")\n);\n// Проверяем, содержит ли текст имя файла \"1.pdf\". Если нет, выбрасывается ошибка с сообщением.",
               "err": {},
-              "uuid": "91f271e5-2037-4092-a81e-cfcc24597db3",
-              "parentUUID": "e60b65d3-0dcd-4da3-99bf-7eb462d8f96d",
+              "uuid": "3aecd9b9-64d1-4704-8b42-0af095a61221",
+              "parentUUID": "b1148682-de69-4979-94a8-5191a3bafca4",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "91f271e5-2037-4092-a81e-cfcc24597db3"
+            "3aecd9b9-64d1-4704-8b42-0af095a61221"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 7237,
+          "duration": 6909,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
