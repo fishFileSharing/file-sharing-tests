@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2024-12-30T17:37:35.257Z",
-    "end": "2024-12-30T17:37:39.660Z",
-    "duration": 4403,
+    "start": "2024-12-30T17:43:56.849Z",
+    "end": "2024-12-30T17:44:00.934Z",
+    "duration": 4085,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "c23d410b-b765-4113-ab33-627646c1b65e",
+      "uuid": "e5e1fa43-61b3-4329-bcd8-8a6d6e323789",
       "title": "",
       "fullFile": "/Users/oh/Desktop/Repos/FileSharing/file-sharing-tests/test/2_select_a_file.js",
       "file": "/test/2_select_a_file.js",
@@ -27,16 +27,16 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "27325722-a399-47e6-880e-1ffd039dfd28",
-          "title": "Test in Edge with Authentication Popup",
+          "uuid": "3b72d46b-f397-40ff-99d7-d5bdbafaea4b",
+          "title": "Select a file and check if it's name appears on page",
           "fullFile": "/Users/oh/Desktop/Repos/FileSharing/file-sharing-tests/test/2_select_a_file.js",
           "file": "/test/2_select_a_file.js",
           "beforeHooks": [
             {
-              "title": "\"before each\" hook in \"Test in Edge with Authentication Popup\"",
-              "fullTitle": "Test in Edge with Authentication Popup \"before each\" hook in \"Test in Edge with Authentication Popup\"",
+              "title": "\"before each\" hook in \"Select a file and check if it's name appears on page\"",
+              "fullTitle": "Select a file and check if it's name appears on page \"before each\" hook in \"Select a file and check if it's name appears on page\"",
               "timedOut": false,
-              "duration": 1206,
+              "duration": 1221,
               "state": null,
               "speed": null,
               "pass": false,
@@ -45,18 +45,18 @@
               "context": null,
               "code": "driver = await new Builder().forBrowser(\"MicrosoftEdge\").build()",
               "err": {},
-              "uuid": "aae899f8-1316-49b5-8925-8fa6f03513a9",
-              "parentUUID": "27325722-a399-47e6-880e-1ffd039dfd28",
+              "uuid": "b9a1dc00-03d2-4de9-86d9-25b78afa6fa7",
+              "parentUUID": "3b72d46b-f397-40ff-99d7-d5bdbafaea4b",
               "isHook": true,
               "skipped": false
             }
           ],
           "afterHooks": [
             {
-              "title": "\"after each\" hook in \"Test in Edge with Authentication Popup\"",
-              "fullTitle": "Test in Edge with Authentication Popup \"after each\" hook in \"Test in Edge with Authentication Popup\"",
+              "title": "\"after each\" hook in \"Select a file and check if it's name appears on page\"",
+              "fullTitle": "Select a file and check if it's name appears on page \"after each\" hook in \"Select a file and check if it's name appears on page\"",
               "timedOut": false,
-              "duration": 57,
+              "duration": 67,
               "state": null,
               "speed": null,
               "pass": false,
@@ -65,8 +65,8 @@
               "context": null,
               "code": "if (driver) {\n  await driver.quit()\n}",
               "err": {},
-              "uuid": "84b72a7c-8fb8-433d-bf8c-2c99be576f79",
-              "parentUUID": "27325722-a399-47e6-880e-1ffd039dfd28",
+              "uuid": "6bea743a-105c-4608-b69f-266067d70f0c",
+              "parentUUID": "3b72d46b-f397-40ff-99d7-d5bdbafaea4b",
               "isHook": true,
               "skipped": false
             }
@@ -74,31 +74,31 @@
           "tests": [
             {
               "title": "should open https://file-sharing-dev.netlify.app/ and check for title",
-              "fullTitle": "Test in Edge with Authentication Popup should open https://file-sharing-dev.netlify.app/ and check for title",
+              "fullTitle": "Select a file and check if it's name appears on page should open https://file-sharing-dev.netlify.app/ and check for title",
               "timedOut": false,
-              "duration": 3137,
+              "duration": 2794,
               "state": "passed",
               "speed": "slow",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "this.timeout(10000)\nawait driver.get(\"https://file-sharing-dev.netlify.app/\")\nawait driver.sleep(1000) // Пауза 1 секунда\nlet selectFilesInput = await driver.wait(\n  until.elementLocated(By.css('[data-testid=\"select-files-input\"]')),\n  5000\n)\nconst filePath = path.join(__dirname, \"..\", \"1.pdf\")\nselectFilesInput.sendKeys(filePath)\nawait driver.sleep(1000) // Пауза 1 секунда\nlet selectedFileName = await driver.wait(\n  until.elementLocated(By.css('[data-testid=\"selected-file-name\"]')),\n  5000\n)\nlet selectedFileNameText = await selectedFileName.getText()\nassert(\n  selectedFileNameText.includes(\"1.pdf\", \"The title is not File Sharing\")\n)",
+              "code": "this.timeout(10000)\nawait driver.get(\"https://file-sharing-dev.netlify.app/\")\nawait driver.sleep(1000)\nlet selectFilesInput = await driver.wait(\n  until.elementLocated(By.css('[data-testid=\"select-files-input\"]')),\n  5000\n)\nconst filePath = path.join(__dirname, \"..\", \"test_files\", \"1.pdf\")\nselectFilesInput.sendKeys(filePath)\nawait driver.sleep(1000)\nlet selectedFileName = await driver.wait(\n  until.elementLocated(By.css('[data-testid=\"selected-file-name\"]')),\n  5000\n)\nlet selectedFileNameText = await selectedFileName.getText()\nassert(\n  selectedFileNameText.includes(\"1.pdf\", \"Something is wrong with filename\")\n)",
               "err": {},
-              "uuid": "b4918213-6257-4c81-911e-f62f658bdd0d",
-              "parentUUID": "27325722-a399-47e6-880e-1ffd039dfd28",
+              "uuid": "f4623308-f311-4dac-adcd-fd5169f14c5e",
+              "parentUUID": "3b72d46b-f397-40ff-99d7-d5bdbafaea4b",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "b4918213-6257-4c81-911e-f62f658bdd0d"
+            "f4623308-f311-4dac-adcd-fd5169f14c5e"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 3137,
+          "duration": 2794,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

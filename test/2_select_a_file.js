@@ -26,7 +26,7 @@ describe("Select a file and check if it's name appears on page", function () {
       5000
     )
 
-    const filePath = path.join(__dirname, "..", "1.pdf")
+    const filePath = path.join(__dirname, "..", "test_files", "1.pdf")
 
     selectFilesInput.sendKeys(filePath)
     await driver.sleep(1000)
