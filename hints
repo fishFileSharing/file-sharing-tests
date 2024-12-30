@@ -1,0 +1,5 @@
+npm i
+// Зверніть увагу, що перед використанням Safari необхідно активувати "Allow Remote Automation"
+// В Safari Developer menu.
+// Докладні інструкції: https://developer.apple.com/documentation/webkit/testing_with_webdriver_in_safari
+npm test

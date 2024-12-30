@@ -1,0 +1,141 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-12-04T15:28:19.508Z",
+    "end": "2024-12-04T15:28:23.077Z",
+    "duration": 3569,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "54a7e418-d1bf-4ada-b7ea-712492c75c00",
+      "title": "",
+      "fullFile": "/Users/oh/Desktop/Repos/AutotestBoilerPlate/test/1 copy.js",
+      "file": "/test/1 copy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "513b804f-35bb-44ef-b61b-8fe4a313ea9e",
+          "title": "Test in Edge with Authentication Popup",
+          "fullFile": "/Users/oh/Desktop/Repos/AutotestBoilerPlate/test/1 copy.js",
+          "file": "/test/1 copy.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Test in Edge with Authentication Popup\"",
+              "fullTitle": "Test in Edge with Authentication Popup \"before each\" hook in \"Test in Edge with Authentication Popup\"",
+              "timedOut": false,
+              "duration": 665,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser(\"MicrosoftEdge\").build()",
+              "err": {},
+              "uuid": "e86bd31a-f544-4441-af7b-be97aa2ae669",
+              "parentUUID": "513b804f-35bb-44ef-b61b-8fe4a313ea9e",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"Test in Edge with Authentication Popup\"",
+              "fullTitle": "Test in Edge with Authentication Popup \"after each\" hook in \"Test in Edge with Authentication Popup\"",
+              "timedOut": false,
+              "duration": 57,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) {\n  await driver.quit()\n}",
+              "err": {},
+              "uuid": "3826d511-ec52-4d75-9c82-01cb95cb8bec",
+              "parentUUID": "513b804f-35bb-44ef-b61b-8fe4a313ea9e",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "should open the-internet.herokuapp.com/basic_auth and check the title",
+              "fullTitle": "Test in Edge with Authentication Popup should open the-internet.herokuapp.com/basic_auth and check the title",
+              "timedOut": false,
+              "duration": 2846,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "this.timeout(10000)\n// Відкриваємо головну сторінку the-internet.herokuapp.com/basic_auth\nawait driver.get(\"http://admin:admin@the-internet.herokuapp.com/basic_auth\")\n// Очікуємо, поки сторінка повністю завантажиться (можна також використовувати інші умови)\nawait driver.wait(until.titleIs(\"The Internet\"), 5000)\n// Перевіряємо, чи заголовок сторінки містить слово \"The Internet\"\nconst pageTitle = await driver.getTitle()\nassert(pageTitle.includes(\"The Internet\"))",
+              "err": {},
+              "uuid": "44e317e9-258e-436d-a909-094ec84609c2",
+              "parentUUID": "513b804f-35bb-44ef-b61b-8fe4a313ea9e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "44e317e9-258e-436d-a909-094ec84609c2"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2846,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "Report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "Reports",
+        "reportFilename": "Report"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
