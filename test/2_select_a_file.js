@@ -5,24 +5,21 @@ const path = require("path")
 describe("Select a file and check if it's name appears on page", function () {
   let driver
 
-  // Запускаємо Edge перед кожним тестом
   beforeEach(async function () {
     driver = await new Builder().forBrowser("MicrosoftEdge").build()
   })
 
-  // Закриваємо браузер після кожного тесту
   afterEach(async function () {
     if (driver) {
       await driver.quit()
     }
   })
 
-  // Наш тест
   it("should open https://file-sharing-dev.netlify.app/ and check for title", async function () {
     this.timeout(10000)
 
     await driver.get("https://file-sharing-dev.netlify.app/")
-    await driver.sleep(1000) // Пауза 1 секунда
+    await driver.sleep(1000)
 
     let selectFilesInput = await driver.wait(
       until.elementLocated(By.css('[data-testid="select-files-input"]')),
@@ -32,7 +29,7 @@ describe("Select a file and check if it's name appears on page", function () {
     const filePath = path.join(__dirname, "..", "1.pdf")
 
     selectFilesInput.sendKeys(filePath)
-    await driver.sleep(1000) // Пауза 1 секунда
+    await driver.sleep(1000)
 
     let selectedFileName = await driver.wait(
       until.elementLocated(By.css('[data-testid="selected-file-name"]')),
