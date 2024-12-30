@@ -1,15 +1,15 @@
 {
   "stats": {
-    "suites": 2,
-    "tests": 2,
+    "suites": 1,
+    "tests": 1,
     "passes": 1,
     "pending": 0,
-    "failures": 1,
-    "start": "2024-12-30T13:39:22.252Z",
-    "end": "2024-12-30T13:39:31.597Z",
-    "duration": 9345,
-    "testsRegistered": 2,
-    "passPercent": 50,
+    "failures": 0,
+    "start": "2024-12-30T17:37:35.257Z",
+    "end": "2024-12-30T17:37:39.660Z",
+    "duration": 4403,
+    "testsRegistered": 1,
+    "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,25 +18,25 @@
   },
   "results": [
     {
-      "uuid": "78e180f3-0c26-4fa4-83b9-714e6316ccf6",
+      "uuid": "c23d410b-b765-4113-ab33-627646c1b65e",
       "title": "",
-      "fullFile": "",
-      "file": "",
+      "fullFile": "/Users/oh/Desktop/Repos/FileSharing/file-sharing-tests/test/2_select_a_file.js",
+      "file": "/test/2_select_a_file.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "4f635dea-1e70-451a-98a2-c4486792d9e9",
+          "uuid": "27325722-a399-47e6-880e-1ffd039dfd28",
           "title": "Test in Edge with Authentication Popup",
-          "fullFile": "/Users/oh/Desktop/Repos/FileSharing/file-sharing-tests/test/1_Template.js",
-          "file": "/test/1_Template.js",
+          "fullFile": "/Users/oh/Desktop/Repos/FileSharing/file-sharing-tests/test/2_select_a_file.js",
+          "file": "/test/2_select_a_file.js",
           "beforeHooks": [
             {
               "title": "\"before each\" hook in \"Test in Edge with Authentication Popup\"",
               "fullTitle": "Test in Edge with Authentication Popup \"before each\" hook in \"Test in Edge with Authentication Popup\"",
               "timedOut": false,
-              "duration": 1226,
+              "duration": 1206,
               "state": null,
               "speed": null,
               "pass": false,
@@ -45,8 +45,8 @@
               "context": null,
               "code": "driver = await new Builder().forBrowser(\"MicrosoftEdge\").build()",
               "err": {},
-              "uuid": "b85ab5ed-cde8-4373-bc8d-dc172867b90e",
-              "parentUUID": "4f635dea-1e70-451a-98a2-c4486792d9e9",
+              "uuid": "aae899f8-1316-49b5-8925-8fa6f03513a9",
+              "parentUUID": "27325722-a399-47e6-880e-1ffd039dfd28",
               "isHook": true,
               "skipped": false
             }
@@ -56,7 +56,7 @@
               "title": "\"after each\" hook in \"Test in Edge with Authentication Popup\"",
               "fullTitle": "Test in Edge with Authentication Popup \"after each\" hook in \"Test in Edge with Authentication Popup\"",
               "timedOut": false,
-              "duration": 55,
+              "duration": 57,
               "state": null,
               "speed": null,
               "pass": false,
@@ -65,85 +65,8 @@
               "context": null,
               "code": "if (driver) {\n  await driver.quit()\n}",
               "err": {},
-              "uuid": "b853bb76-8a62-46a7-940d-303b148ba099",
-              "parentUUID": "4f635dea-1e70-451a-98a2-c4486792d9e9",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "tests": [
-            {
-              "title": "should open the-internet.herokuapp.com/basic_auth and check the title",
-              "fullTitle": "Test in Edge with Authentication Popup should open the-internet.herokuapp.com/basic_auth and check the title",
-              "timedOut": false,
-              "duration": 4144,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "this.timeout(10000)\n// Відкриваємо головну сторінку the-internet.herokuapp.com/basic_auth\nawait driver.get(\"http://admin:admin@the-internet.herokuapp.com/basic_auth\")\n// await driver.sleep(1000) // Пауза 1 секунда\n// Очікуємо, поки сторінка повністю завантажиться (можна також використовувати інші умови)\nawait driver.wait(until.titleIs(\"The Internet\"), 5000)\n//  await driver.sleep(1000) // Пауза 1 секунда\n// Перевіряємо, чи заголовок сторінки містить слово \"The Internet\"\nconst pageTitle = await driver.getTitle()\n// await driver.sleep(1000) // Пауза 1 секунда\nassert(pageTitle.includes(\"The Internet\"))",
-              "err": {},
-              "uuid": "df5f16bb-7006-41c8-b888-7e387e623836",
-              "parentUUID": "4f635dea-1e70-451a-98a2-c4486792d9e9",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "df5f16bb-7006-41c8-b888-7e387e623836"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 4144,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 2000
-        },
-        {
-          "uuid": "aea3649d-fd3b-4fd8-97a7-4f8dc31f5f2f",
-          "title": "Test in Edge with Authentication Popup",
-          "fullFile": "/Users/oh/Desktop/Repos/FileSharing/file-sharing-tests/test/2_Is_homepage_opened.js",
-          "file": "/test/2_Is_homepage_opened.js",
-          "beforeHooks": [
-            {
-              "title": "\"before each\" hook in \"Test in Edge with Authentication Popup\"",
-              "fullTitle": "Test in Edge with Authentication Popup \"before each\" hook in \"Test in Edge with Authentication Popup\"",
-              "timedOut": false,
-              "duration": 660,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "driver = await new Builder().forBrowser(\"MicrosoftEdge\").build()",
-              "err": {},
-              "uuid": "c5b9d0a8-5576-48f0-8978-745e08ed1425",
-              "parentUUID": "aea3649d-fd3b-4fd8-97a7-4f8dc31f5f2f",
-              "isHook": true,
-              "skipped": false
-            }
-          ],
-          "afterHooks": [
-            {
-              "title": "\"after each\" hook in \"Test in Edge with Authentication Popup\"",
-              "fullTitle": "Test in Edge with Authentication Popup \"after each\" hook in \"Test in Edge with Authentication Popup\"",
-              "timedOut": false,
-              "duration": 56,
-              "state": null,
-              "speed": null,
-              "pass": false,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "if (driver) {\n  await driver.quit()\n}",
-              "err": {},
-              "uuid": "04fdd6fd-ede1-47bb-969e-cf1bbc7af364",
-              "parentUUID": "aea3649d-fd3b-4fd8-97a7-4f8dc31f5f2f",
+              "uuid": "84b72a7c-8fb8-433d-bf8c-2c99be576f79",
+              "parentUUID": "27325722-a399-47e6-880e-1ffd039dfd28",
               "isHook": true,
               "skipped": false
             }
@@ -153,33 +76,29 @@
               "title": "should open https://file-sharing-dev.netlify.app/ and check for title",
               "fullTitle": "Test in Edge with Authentication Popup should open https://file-sharing-dev.netlify.app/ and check for title",
               "timedOut": false,
-              "duration": 3198,
-              "state": "failed",
-              "speed": null,
-              "pass": false,
-              "fail": true,
+              "duration": 3137,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
               "pending": false,
               "context": null,
-              "code": "this.timeout(10000)\nawait driver.get(\"https://file-sharing-dev.netlify.app/\")\nawait driver.sleep(1000) // Пауза 1 секунда\nawait driver.wait(\n  until.elementLocated(By.css('[data-testid=\"home-page-title\"]')),\n  5000\n)\nlet element = await driver.wait(\n  until.elementLocated(By.css('[data-testid=\"home-page-title\"]')),\n  1000\n)\nawait driver.sleep(1000) // Пауза 1 секунда\nassert(text.includes(\"file\"), 'Текст элемента не содержит слово \"file\".')\nawait driver.sleep(1000) // Пауза 1 секунда",
-              "err": {
-                "message": "ReferenceError: text is not defined",
-                "estack": "ReferenceError: text is not defined\n    at Context.<anonymous> (test/2_Is_homepage_opened.js:37:12)",
-                "diff": null
-              },
-              "uuid": "7c45cd34-7bef-4398-9d33-130f66d04321",
-              "parentUUID": "aea3649d-fd3b-4fd8-97a7-4f8dc31f5f2f",
+              "code": "this.timeout(10000)\nawait driver.get(\"https://file-sharing-dev.netlify.app/\")\nawait driver.sleep(1000) // Пауза 1 секунда\nlet selectFilesInput = await driver.wait(\n  until.elementLocated(By.css('[data-testid=\"select-files-input\"]')),\n  5000\n)\nconst filePath = path.join(__dirname, \"..\", \"1.pdf\")\nselectFilesInput.sendKeys(filePath)\nawait driver.sleep(1000) // Пауза 1 секунда\nlet selectedFileName = await driver.wait(\n  until.elementLocated(By.css('[data-testid=\"selected-file-name\"]')),\n  5000\n)\nlet selectedFileNameText = await selectedFileName.getText()\nassert(\n  selectedFileNameText.includes(\"1.pdf\", \"The title is not File Sharing\")\n)",
+              "err": {},
+              "uuid": "b4918213-6257-4c81-911e-f62f658bdd0d",
+              "parentUUID": "27325722-a399-47e6-880e-1ffd039dfd28",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [],
-          "failures": [
-            "7c45cd34-7bef-4398-9d33-130f66d04321"
+          "passes": [
+            "b4918213-6257-4c81-911e-f62f658bdd0d"
           ],
+          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 3198,
+          "duration": 3137,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

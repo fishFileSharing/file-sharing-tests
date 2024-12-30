@@ -1,7 +1,7 @@
 const { Builder, By, until } = require("selenium-webdriver")
 const assert = require("assert")
 
-describe("Test in Edge with Authentication Popup", function () {
+describe("Open homepage", function () {
   let driver
 
   // Запускаємо Edge перед кожним тестом
@@ -23,19 +23,23 @@ describe("Test in Edge with Authentication Popup", function () {
     await driver.get("https://file-sharing-dev.netlify.app/")
     await driver.sleep(1000) // Пауза 1 секунда
 
-    await driver.wait(
-      until.elementLocated(By.css('[data-testid="home-page-title"]')),
-      5000
-    )
-    let element = await driver.wait(
+    let homePageTitle = await driver.wait(
       until.elementLocated(By.css('[data-testid="home-page-title"]')),
       1000
     )
 
+    let homePageTitleText = await homePageTitle.getText()
+
+    assert(
+      homePageTitleText.includes("Fast file sharing without registration"),
+      "homepage title text is not Fast file sharing without registration"
+    )
+
     await driver.sleep(1000) // Пауза 1 секунда
 
-    assert(text.includes("file"), 'Текст элемента не содержит слово "file".')
+    const pageTitle = await driver.getTitle()
+    // await driver.sleep(1000) // Пауза 1 секунда
 
-    await driver.sleep(1000) // Пауза 1 секунда
+    assert(pageTitle.includes("File Sharing", "The title is not File Sharing"))
   })
 })
