@@ -49,7 +49,7 @@ describe("Select a file and check if it's name appears on page", function () {
     // Ожидаем, пока на странице появится элемент с CSS-селектором `data-testid="select-files-input"`.
     // Максимальное время ожидания — 5 секунд.
 
-    const filePath = path.join(__dirname, "..", "test_files", "1.pdf");
+    const filePath = path.join(__dirname, "..", "test_files", "Full.jpeg");
     // Создаем абсолютный путь к файлу `1.pdf`, который находится в папке `test_files`.
 
     selectFilesInput.sendKeys(filePath);

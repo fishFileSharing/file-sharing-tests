@@ -1,76 +1,67 @@
-const { Builder, By, until, Key } = require("selenium-webdriver");
-// Импортируем модули из Selenium WebDriver. 
-// - `Builder` используется для создания экземпляра WebDriver.
-// - `By` позволяет находить элементы на странице.
-// - `until` предоставляет условия ожидания.
-// - `Key` позволяет использовать специальные клавиши клавиатуры.
+const { Builder, By, until } = require("selenium-webdriver");
+// Импортируем модули из Selenium WebDriver.
 
 const assert = require("assert");
-// Импортируем библиотеку `assert` для выполнения проверок (assertions) в тестах.
+// Импортируем библиотеку `assert` для выполнения проверок.
 
 const path = require("path");
-// Импортируем модуль `path` для работы с путями файловой системы, например, для создания полного пути к файлу.
+// Импортируем модуль `path` для работы с путями файлов.
 
-describe("Select a file and check if it's name appears on page", function () {
-// Описываем тестовый набор (test suite) с названием "Выбрать файл и проверить, отображается ли его имя на странице".
-
+describe("Select files and check if their names appear on page", function () {
   let driver;
-  // Объявляем переменную `driver`, которая будет использоваться для управления браузером.
 
   beforeEach(async function () {
-    // Хук `beforeEach` запускается перед каждым тестом внутри тестового набора.
     driver = await new Builder().forBrowser("MicrosoftEdge").build();
     // Создаем экземпляр WebDriver для браузера Microsoft Edge.
   });
 
   afterEach(async function () {
-    // Хук `afterEach` запускается после каждого теста внутри тестового набора.
     if (driver) {
       await driver.quit();
-      // Завершаем работу WebDriver, чтобы закрыть браузер и освободить ресурсы.
+      // Завершаем работу WebDriver.
     }
   });
 
-  it("should open https://file-sharing-dev.netlify.app/ and check for title", async function () {
-    // Описываем отдельный тест с названием: "Открыть сайт и проверить заголовок".
-    this.timeout(10000);
-    // Устанавливаем тайм-аут для теста в 10 секунд.
+  it("should upload two files and verify their names appear", async function () {
+    this.timeout(20000); // Увеличиваем тайм-аут для теста до 20 секунд.
 
     await driver.get("https://file-sharing-dev.netlify.app/");
-    // Загружаем указанную веб-страницу в браузере.
+    // Загружаем веб-страницу.
 
-    await driver.sleep(3000);
-    // Ждем 3 секунды, чтобы страница успела полностью загрузиться.
+    await driver.sleep(3000); // Ждем, чтобы страница успела загрузиться.
 
-    let selectFilesInput = await driver.wait(
+    const selectFilesInput = await driver.wait(
       until.elementLocated(By.css('[data-testid="select-files-input"]')),
       5000
     );
-    // Ожидаем, пока на странице появится элемент с CSS-селектором `data-testid="select-files-input"`.
-    // Максимальное время ожидания — 5 секунд.
+    // Находим поле для загрузки файлов.
 
-    const filePath = path.join(__dirname, "..", "test_files", "1.pdf");
-    // Создаем абсолютный путь к файлу `1.pdf`, который находится в папке `test_files`.
+    const files = [
+      path.join(__dirname, "..", "test_files", "1.pdf"),
+      path.join(__dirname, "..", "test_files", "Full.jpeg"),
+    ];
+    // Задаем пути к файлам для загрузки.
 
-    selectFilesInput.sendKeys(filePath);
-    // Отправляем путь к файлу в поле ввода, чтобы загрузить файл на сайт.
+    for (const filePath of files) {
+      console.log(`Uploading file: ${filePath}`);
+      selectFilesInput.sendKeys(filePath); // Загружаем файл.
+      await driver.sleep(3000); // Ждем обработки загрузки файла.
 
-    await driver.sleep(3000);
-    // Ждем 3 секунды, чтобы система успела обработать загрузку файла.
+      const selectedFileName = await driver.wait(
+        until.elementLocated(By.css('[data-testid="selected-file-name"]')),
+        5000
+      );
+      // Ожидаем появления имени загруженного файла.
 
-    let selectedFileName = await driver.wait(
-      until.elementLocated(By.css('[data-testid="selected-file-name"]')),
-      5000
-    );
-    // Ожидаем, пока на странице появится элемент с CSS-селектором `data-testid="selected-file-name"`.
-    // Этот элемент отображает имя загруженного файла.
+      const selectedFileNameText = await selectedFileName.getText();
+      console.log(`Displayed file name: ${selectedFileNameText}`);
 
-    let selectedFileNameText = await selectedFileName.getText();
-    // Считываем текст из элемента, который отображает имя файла.
-
-    assert(
-      selectedFileNameText.includes("1.pdf", "Something is wrong with filename")
-    );
-    // Проверяем, содержит ли текст имя файла "1.pdf". Если нет, выбрасывается ошибка с сообщением.
+      const expectedFileName = path.basename(filePath); // Извлекаем только имя файла.
+      assert(
+        selectedFileNameText.includes(expectedFileName),
+        `Expected file name to include "${expectedFileName}", but got "${selectedFileNameText}"`
+      );
+      // Проверяем, содержит ли текст имя файла.
+    }
   });
 });
