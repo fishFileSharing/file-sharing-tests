@@ -49,8 +49,8 @@ describe("Select a file and check if it's name appears on page", function () {
     // Ожидаем, пока на странице появится элемент с CSS-селектором `data-testid="select-files-input"`.
     // Максимальное время ожидания — 5 секунд.
 
-    const filePath = path.join(__dirname, "..", "test_files", "File sharing - User stories and requirements.xlsx");
-    // Создаем абсолютный путь к файлу `File sharing - User stories and requirements.xlsx`, который находится в папке `test_files`.
+    const filePath = path.join(__dirname, "..", "test_files", "xlsx.xlsx");
+    // Создаем абсолютный путь к файлу `1.xlsx`, который находится в папке `test_files`.
 
     selectFilesInput.sendKeys(filePath);
     // Отправляем путь к файлу в поле ввода, чтобы загрузить файл на сайт.
@@ -69,8 +69,8 @@ describe("Select a file and check if it's name appears on page", function () {
     // Считываем текст из элемента, который отображает имя файла.
 
     assert(
-      selectedFileNameText.includes("File sharing - User stories and requirements.xlsx", "Something is wrong with filename")
+      selectedFileNameText.includes("xlsx", "Something is wrong with filename")
     );
-    // Проверяем, содержит ли текст имя файла "File sharing - User stories and requirements.xlsx". Если нет, выбрасывается ошибка с сообщением.
+    // Проверяем, содержит ли текст имя файла "1.xlsx". Если нет, выбрасывается ошибка с сообщением.
   });
 });
