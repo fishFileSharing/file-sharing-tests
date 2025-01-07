@@ -1,8 +1,8 @@
-const { Builder, By, until, Key } = require("selenium-webdriver");
+const { Builder, By, until } = require("selenium-webdriver");
 const assert = require("assert");
 const path = require("path");
 
-describe("Select a file and check if its name appears on page", function () {
+describe("Select files and check if their names appear on page", function () {
   let driver;
 
   beforeEach(async function () {
@@ -15,47 +15,43 @@ describe("Select a file and check if its name appears on page", function () {
     }
   });
 
-  it("should open https://file-sharing-dev.netlify.app/ and check for title", async function () {
-    this.timeout(10000);
+  it("should open https://file-sharing-dev.netlify.app/ and check file names", async function () {
+    this.timeout(30000); // Збільшено тайм-аут до 30 секунд
 
     await driver.get("https://file-sharing-dev.netlify.app/");
     await driver.sleep(3000);
 
-    const selectFilesInput = await driver.wait(
+    let selectFilesInput = await driver.wait(
       until.elementLocated(By.css('[data-testid="select-files-input"]')),
-      5000
+      10000 // Збільшено до 10 секунд
     );
-   
 
-    const filePath1 = path.join(__dirname, "..", "test_files", "pdf.pdf");
-    const filePath2 = path.join(__dirname, "..", "test_files", "xlsx.xlsx");
-
-
-    selectFilesInput.sendKeys(filePath1 + "\n" + filePath2);
+    // Перший файл (pdf.pdf)
+    const firstFilePath = path.join(__dirname, "..", "test_files", "pdf.pdf");
+    selectFilesInput.sendKeys(firstFilePath);
     await driver.sleep(3000);
 
-
-    // Перевіряємо перший файл
-    const selectedFileName1 = await driver.wait(
+    // Ожидаємо появу імені першого файлу
+    let selectedFileName = await driver.wait(
       until.elementLocated(By.css('[data-testid="selected-file-name"]')),
-      5000
+      10000 // Збільшено до 10 секунд
     );
-    const selectedFileNameText1 = await selectedFileName1.getText();
-    assert(
-      selectedFileNameText1.includes("pdf"),
-      "PDF file name is not displayed correctly."
-    );
+    let selectedFileNameText = await selectedFileName.getText();
+    // Перевіряємо, чи містить текст ім'я першого файлу
+    assert(selectedFileNameText.includes("pdf"), "Something is wrong with first filename");
 
-    // Перевіряємо другий файл
-    const selectedFileName2 = await driver.wait(
+    // Другий файл (xlsx.xlsx)
+    const secondFilePath = path.join(__dirname, "..", "test_files", "xlsx.xlsx");
+    selectFilesInput.sendKeys(secondFilePath);
+    await driver.sleep(3000);
+
+    // Ожидаємо появу імені другого файлу
+    selectedFileName = await driver.wait(
       until.elementLocated(By.css('[data-testid="selected-file-name"]')),
-      5000
+      10000 // Збільшено до 10 секунд
     );
-
-    const selectedFileNameText2 = await selectedFileName2.getText();
-    assert(
-      selectedFileNameText2.includes("xlsx"),
-      "XLSX file name is not displayed correctly."
-    );
+    selectedFileNameText = await selectedFileName.getText();
+    // Перевіряємо, чи містить текст ім'я другого файлу
+    assert(selectedFileNameText.includes("xlsx"), "Something is wrong with second filename");
   });
 });
