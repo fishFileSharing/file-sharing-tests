@@ -1,15 +1,15 @@
 {
   "stats": {
-    "suites": 1,
-    "tests": 1,
+    "suites": 3,
+    "tests": 3,
     "passes": 1,
     "pending": 0,
-    "failures": 0,
-    "start": "2024-12-30T18:06:37.875Z",
-    "end": "2024-12-30T18:06:46.186Z",
-    "duration": 8311,
-    "testsRegistered": 1,
-    "passPercent": 100,
+    "failures": 2,
+    "start": "2025-01-07T15:25:15.839Z",
+    "end": "2025-01-07T15:25:38.857Z",
+    "duration": 23018,
+    "testsRegistered": 3,
+    "passPercent": 33.33333333333333,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,35 +18,116 @@
   },
   "results": [
     {
-      "uuid": "5f0251ba-780d-4522-9e31-cf1645257f96",
+      "uuid": "15763970-6892-4f65-8efc-6106e53a50b2",
       "title": "",
-      "fullFile": "C:\\Users\\pro32\\Documents\\Проект\\Тестовые данные\\file-sharing-tests\\test\\1_select_a_file.js",
-      "file": "\\test\\1_select_a_file.js",
+      "fullFile": "",
+      "file": "",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "e60b65d3-0dcd-4da3-99bf-7eb462d8f96d",
-          "title": "Select a file and check if it's name appears on page",
-          "fullFile": "C:\\Users\\pro32\\Documents\\Проект\\Тестовые данные\\file-sharing-tests\\test\\1_select_a_file.js",
-          "file": "\\test\\1_select_a_file.js",
+          "uuid": "35c636e9-9a98-4f6a-9947-9eef7283686d",
+          "title": "Select a file and check if its name appears on page",
+          "fullFile": "/Users/oh/Desktop/Repos/FileSharing/file-sharing-tests/test/1_select_a_pdf+xlsx.js",
+          "file": "/test/1_select_a_pdf+xlsx.js",
           "beforeHooks": [
             {
-              "title": "\"before each\" hook in \"Select a file and check if it's name appears on page\"",
-              "fullTitle": "Select a file and check if it's name appears on page \"before each\" hook in \"Select a file and check if it's name appears on page\"",
+              "title": "\"before each\" hook in \"Select a file and check if its name appears on page\"",
+              "fullTitle": "Select a file and check if its name appears on page \"before each\" hook in \"Select a file and check if its name appears on page\"",
               "timedOut": false,
-              "duration": 991,
+              "duration": 809,
               "state": null,
               "speed": null,
               "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "// Хук `beforeEach` запускается перед каждым тестом внутри тестового набора.\ndriver = await new Builder().forBrowser(\"MicrosoftEdge\").build();\n// Создаем экземпляр WebDriver для браузера Microsoft Edge.",
+              "code": "driver = await new Builder().forBrowser(\"MicrosoftEdge\").build();",
               "err": {},
-              "uuid": "a9da033d-cc33-4b3d-b850-b561c508b49f",
-              "parentUUID": "e60b65d3-0dcd-4da3-99bf-7eb462d8f96d",
+              "uuid": "acc5c11d-fb7c-4dab-8b72-a15ee5e296c6",
+              "parentUUID": "35c636e9-9a98-4f6a-9947-9eef7283686d",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"Select a file and check if its name appears on page\"",
+              "fullTitle": "Select a file and check if its name appears on page \"after each\" hook in \"Select a file and check if its name appears on page\"",
+              "timedOut": false,
+              "duration": 75,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) {\n  await driver.quit();\n}",
+              "err": {},
+              "uuid": "f4f78fba-6462-4a6e-899e-b571535d0a18",
+              "parentUUID": "35c636e9-9a98-4f6a-9947-9eef7283686d",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "should open https://file-sharing-dev.netlify.app/ and check for title",
+              "fullTitle": "Select a file and check if its name appears on page should open https://file-sharing-dev.netlify.app/ and check for title",
+              "timedOut": true,
+              "duration": 10000,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "this.timeout(10000);\nawait driver.get(\"https://file-sharing-dev.netlify.app/\");\nawait driver.sleep(3000);\nconst selectFilesInput = await driver.wait(\n  until.elementLocated(By.css('[data-testid=\"select-files-input\"]')),\n  5000\n);\n   \nconst filePath1 = path.join(__dirname, \"..\", \"test_files\", \"pdf.pdf\");\nconst filePath2 = path.join(__dirname, \"..\", \"test_files\", \"xlsx.xlsx\");\n\nselectFilesInput.sendKeys(filePath1 + \"\\n\" + filePath2);\nawait driver.sleep(3000);\n\n// Перевіряємо перший файл\nconst selectedFileName1 = await driver.wait(\n  until.elementLocated(By.css('[data-testid=\"selected-file-name\"]')),\n  5000\n);\nconst selectedFileNameText1 = await selectedFileName1.getText();\nassert(\n  selectedFileNameText1.includes(\"pdf\"),\n  \"PDF file name is not displayed correctly.\"\n);\n// Перевіряємо другий файл\nconst selectedFileName2 = await driver.wait(\n  until.elementLocated(By.css('[data-testid=\"selected-file-name\"]')),\n  5000\n);\nconst selectedFileNameText2 = await selectedFileName2.getText();\nassert(\n  selectedFileNameText2.includes(\"xlsx\"),\n  \"XLSX file name is not displayed correctly.\"\n);",
+              "err": {
+                "message": "Error: Timeout of 10000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves. (/Users/oh/Desktop/Repos/FileSharing/file-sharing-tests/test/1_select_a_pdf+xlsx.js)",
+                "estack": "Error: Timeout of 10000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves. (/Users/oh/Desktop/Repos/FileSharing/file-sharing-tests/test/1_select_a_pdf+xlsx.js)\n    at listOnTimeout (node:internal/timers:573:17)\n    at process.processTimers (node:internal/timers:514:7)",
+                "diff": null
+              },
+              "uuid": "a32749e3-1a3f-43c4-9f7e-548137ba9696",
+              "parentUUID": "35c636e9-9a98-4f6a-9947-9eef7283686d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "a32749e3-1a3f-43c4-9f7e-548137ba9696"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 10000,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "d169507d-5e55-494e-a25a-3add1af1caec",
+          "title": "Select a file and check if it's name appears on page",
+          "fullFile": "/Users/oh/Desktop/Repos/FileSharing/file-sharing-tests/test/1_select_a_pdf.js",
+          "file": "/test/1_select_a_pdf.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Select a file and check if it's name appears on page\"",
+              "fullTitle": "Select a file and check if it's name appears on page \"before each\" hook in \"Select a file and check if it's name appears on page\"",
+              "timedOut": false,
+              "duration": 679,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Хук `beforeEach` запускается перед каждым тестом внутри тестового набора.\ndriver = await new Builder().forBrowser(\"MicrosoftEdge\").build()\n// Создаем экземпляр WebDriver для браузера Microsoft Edge.",
+              "err": {},
+              "uuid": "8cbbc462-01c5-4d3d-a29d-c8ea5e15ab79",
+              "parentUUID": "d169507d-5e55-494e-a25a-3add1af1caec",
               "isHook": true,
               "skipped": false
             }
@@ -56,17 +137,17 @@
               "title": "\"after each\" hook in \"Select a file and check if it's name appears on page\"",
               "fullTitle": "Select a file and check if it's name appears on page \"after each\" hook in \"Select a file and check if it's name appears on page\"",
               "timedOut": false,
-              "duration": 76,
+              "duration": 56,
               "state": null,
               "speed": null,
               "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "// Хук `afterEach` запускается после каждого теста внутри тестового набора.\nif (driver) {\n  await driver.quit();\n  // Завершаем работу WebDriver, чтобы закрыть браузер и освободить ресурсы.\n}",
+              "code": "// Хук `afterEach` запускается после каждого теста внутри тестового набора.\nif (driver) {\n  await driver.quit()\n  // Завершаем работу WebDriver, чтобы закрыть браузер и освободить ресурсы.\n}",
               "err": {},
-              "uuid": "5f7e4c57-6d1a-4962-9b30-673333c1ab4e",
-              "parentUUID": "e60b65d3-0dcd-4da3-99bf-7eb462d8f96d",
+              "uuid": "03234824-b440-4d94-b6cf-7171da7c3fb0",
+              "parentUUID": "d169507d-5e55-494e-a25a-3add1af1caec",
               "isHook": true,
               "skipped": false
             }
@@ -76,29 +157,110 @@
               "title": "should open https://file-sharing-dev.netlify.app/ and check for title",
               "fullTitle": "Select a file and check if it's name appears on page should open https://file-sharing-dev.netlify.app/ and check for title",
               "timedOut": false,
-              "duration": 7237,
+              "duration": 6599,
               "state": "passed",
               "speed": "slow",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "// Описываем отдельный тест с названием: \"Открыть сайт и проверить заголовок\".\nthis.timeout(10000);\n// Устанавливаем тайм-аут для теста в 10 секунд.\nawait driver.get(\"https://file-sharing-dev.netlify.app/\");\n// Загружаем указанную веб-страницу в браузере.\nawait driver.sleep(3000);\n// Ждем 3 секунды, чтобы страница успела полностью загрузиться.\nlet selectFilesInput = await driver.wait(\n  until.elementLocated(By.css('[data-testid=\"select-files-input\"]')),\n  5000\n);\n// Ожидаем, пока на странице появится элемент с CSS-селектором `data-testid=\"select-files-input\"`.\n// Максимальное время ожидания — 5 секунд.\nconst filePath = path.join(__dirname, \"..\", \"test_files\", \"1.pdf\");\n// Создаем абсолютный путь к файлу `1.pdf`, который находится в папке `test_files`.\nselectFilesInput.sendKeys(filePath);\n// Отправляем путь к файлу в поле ввода, чтобы загрузить файл на сайт.\nawait driver.sleep(3000);\n// Ждем 3 секунды, чтобы система успела обработать загрузку файла.\nlet selectedFileName = await driver.wait(\n  until.elementLocated(By.css('[data-testid=\"selected-file-name\"]')),\n  5000\n);\n// Ожидаем, пока на странице появится элемент с CSS-селектором `data-testid=\"selected-file-name\"`.\n// Этот элемент отображает имя загруженного файла.\nlet selectedFileNameText = await selectedFileName.getText();\n// Считываем текст из элемента, который отображает имя файла.\nassert(\n  selectedFileNameText.includes(\"1.pdf\", \"Something is wrong with filename\")\n);\n// Проверяем, содержит ли текст имя файла \"1.pdf\". Если нет, выбрасывается ошибка с сообщением.",
+              "code": "// Описываем отдельный тест с названием: \"Открыть сайт и проверить заголовок\".\nthis.timeout(20000)\n// Устанавливаем тайм-аут для теста в 10 секунд.\nawait driver.get(\"https://file-sharing-dev.netlify.app/\")\n// Загружаем указанную веб-страницу в браузере.\nawait driver.sleep(3000)\n// Ждем 3 секунды, чтобы страница успела полностью загрузиться.\nlet selectFilesInput = await driver.wait(\n  until.elementLocated(By.css('[data-testid=\"select-files-input\"]')),\n  5000\n)\n// Ожидаем, пока на странице появится элемент с CSS-селектором `data-testid=\"select-files-input\"`.\n// Максимальное время ожидания — 5 секунд.\nconst filePath = path.join(__dirname, \"..\", \"test_files\", \"pdf.pdf\")\n// Создаем абсолютный путь к файлу `pdf.pdf`, который находится в папке `test_files`.\nselectFilesInput.sendKeys(filePath)\n// Отправляем путь к файлу в поле ввода, чтобы загрузить файл на сайт.\nawait driver.sleep(3000)\n// Ждем 3 секунды, чтобы система успела обработать загрузку файла.\nlet selectedFileName = await driver.wait(\n  until.elementLocated(By.css('[data-testid=\"selected-file-name\"]')),\n  5000\n)\n// Ожидаем, пока на странице появится элемент с CSS-селектором `data-testid=\"selected-file-name\"`.\n// Этот элемент отображает имя загруженного файла.\nlet selectedFileNameText = await selectedFileName.getText()\n// Считываем текст из элемента, который отображает имя файла.\nassert(\n  selectedFileNameText.includes(\"pdf\", \"Something is wrong with filename\")\n)\n// Проверяем, содержит ли текст имя файла \"pdf.pdf\". Если нет, выбрасывается ошибка с сообщением.",
               "err": {},
-              "uuid": "91f271e5-2037-4092-a81e-cfcc24597db3",
-              "parentUUID": "e60b65d3-0dcd-4da3-99bf-7eb462d8f96d",
+              "uuid": "00c0633d-889b-4429-af1f-580ee033a66d",
+              "parentUUID": "d169507d-5e55-494e-a25a-3add1af1caec",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "91f271e5-2037-4092-a81e-cfcc24597db3"
+            "00c0633d-889b-4429-af1f-580ee033a66d"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 7237,
+          "duration": 6599,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 20000
+        },
+        {
+          "uuid": "fb80fe09-4b98-4fd9-8f1f-24758a89535e",
+          "title": "Select a file and check if it's name appears on page",
+          "fullFile": "/Users/oh/Desktop/Repos/FileSharing/file-sharing-tests/test/2_select_a_xlsx.js",
+          "file": "/test/2_select_a_xlsx.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Select a file and check if it's name appears on page\"",
+              "fullTitle": "Select a file and check if it's name appears on page \"before each\" hook in \"Select a file and check if it's name appears on page\"",
+              "timedOut": false,
+              "duration": 663,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Хук `beforeEach` запускается перед каждым тестом внутри тестового набора.\ndriver = await new Builder().forBrowser(\"MicrosoftEdge\").build();\n// Создаем экземпляр WebDriver для браузера Microsoft Edge.",
+              "err": {},
+              "uuid": "66cec82f-925a-4a43-a619-812d87ddae7c",
+              "parentUUID": "fb80fe09-4b98-4fd9-8f1f-24758a89535e",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"Select a file and check if it's name appears on page\"",
+              "fullTitle": "Select a file and check if it's name appears on page \"after each\" hook in \"Select a file and check if it's name appears on page\"",
+              "timedOut": false,
+              "duration": 57,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Хук `afterEach` запускается после каждого теста внутри тестового набора.\nif (driver) {\n  await driver.quit();\n  // Завершаем работу WebDriver, чтобы закрыть браузер и освободить ресурсы.\n}",
+              "err": {},
+              "uuid": "3507eab9-0d8e-4526-8b5e-f27bd7d77e32",
+              "parentUUID": "fb80fe09-4b98-4fd9-8f1f-24758a89535e",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "should open https://file-sharing-dev.netlify.app/ and check for title",
+              "fullTitle": "Select a file and check if it's name appears on page should open https://file-sharing-dev.netlify.app/ and check for title",
+              "timedOut": false,
+              "duration": 4071,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// Описываем отдельный тест с названием: \"Открыть сайт и проверить заголовок\".\nthis.timeout(10000);\n// Устанавливаем тайм-аут для теста в 10 секунд.\nawait driver.get(\"https://file-sharing-dev.netlify.app/\");\n// Загружаем указанную веб-страницу в браузере.\nawait driver.sleep(3000);\n// Ждем 3 секунды, чтобы страница успела полностью загрузиться.\nlet selectFilesInput = await driver.wait(\n  until.elementLocated(By.css('[data-testid=\"select-files-input\"]')),\n  5000\n);\n// Ожидаем, пока на странице появится элемент с CSS-селектором `data-testid=\"select-files-input\"`.\n// Максимальное время ожидания — 5 секунд.\nconst filePath = path.join(__dirname, \"..\", \"test_files\", \"xlsx.xlsx\");\n// Создаем абсолютный путь к файлу `1.xlsx`, который находится в папке `test_files`.\nselectFilesInput.sendKeys(filePath);\n// Отправляем путь к файлу в поле ввода, чтобы загрузить файл на сайт.\nawait driver.sleep(3000);\n// Ждем 3 секунды, чтобы система успела обработать загрузку файла.\nlet selectedFileName = await driver.wait(\n  until.elementLocated(By.css('[data-testid=\"selected-file-name\"]')),\n  5000\n);\n// Ожидаем, пока на странице появится элемент с CSS-селектором `data-testid=\"selected-file-name\"`.\n// Этот элемент отображает имя загруженного файла.\nlet selectedFileNameText = await selectedFileName.getText();\n// Считываем текст из элемента, который отображает имя файла.\nassert(\n  selectedFileNameText.includes(\"xlsx\", \"Something is wrong with filename\")\n);\n// Проверяем, содержит ли текст имя файла \"1.xlsx\". Если нет, выбрасывается ошибка с сообщением.",
+              "err": {
+                "message": "NoSuchWindowError: no such window: target window already closed\nfrom unknown error: web view not found\n  (Session info: MicrosoftEdge=131.0.2903.112)",
+                "estack": "NoSuchWindowError: no such window: target window already closed\nfrom unknown error: web view not found\n  (Session info: MicrosoftEdge=131.0.2903.112)\n    at Object.throwDecodedError (node_modules/selenium-webdriver/lib/error.js:524:15)\n    at parseHttpResponse (node_modules/selenium-webdriver/lib/http.js:601:13)\n    at Executor.execute (node_modules/selenium-webdriver/lib/http.js:529:28)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Driver.execute (node_modules/selenium-webdriver/lib/webdriver.js:745:17)\n    at async Driver.findElements (node_modules/selenium-webdriver/lib/webdriver.js:1089:17)",
+                "diff": null
+              },
+              "uuid": "54133b1a-50ed-4682-8f98-aed1dccdc89d",
+              "parentUUID": "fb80fe09-4b98-4fd9-8f1f-24758a89535e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "54133b1a-50ed-4682-8f98-aed1dccdc89d"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 4071,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
