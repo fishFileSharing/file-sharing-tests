@@ -12,8 +12,6 @@ const path = require("path")
 // Импортируем модуль `path` для работы с путями файловой системы, например, для создания полного пути к файлу.
 
 describe("Select a file and check if it's name appears on page", function () {
-  this.timeout(20000)
-
   // Описываем тестовый набор (test suite) с названием "Выбрать файл и проверить, отображается ли его имя на странице".
 
   let driver
@@ -46,13 +44,13 @@ describe("Select a file and check if it's name appears on page", function () {
 
     let selectFilesInput = await driver.wait(
       until.elementLocated(By.css('[data-testid="select-files-input"]')),
-      5000
+      10000
     )
     // Ожидаем, пока на странице появится элемент с CSS-селектором `data-testid="select-files-input"`.
     // Максимальное время ожидания — 5 секунд.
 
-    const filePath = path.join(__dirname, "..", "test_files", "pdf.pdf")
-    // Создаем абсолютный путь к файлу `pdf.pdf`, который находится в папке `test_files`.
+    const filePath = path.join(__dirname, "..", "test_files", "doc.doc")
+    // Создаем абсолютный путь к файлу `doc.doc`, который находится в папке `test_files`.
 
     selectFilesInput.sendKeys(filePath)
     // Отправляем путь к файлу в поле ввода, чтобы загрузить файл на сайт.
@@ -71,8 +69,8 @@ describe("Select a file and check if it's name appears on page", function () {
     // Считываем текст из элемента, который отображает имя файла.
 
     assert(
-      selectedFileNameText.includes("pdf", "Something is wrong with filename")
+      selectedFileNameText.includes("doc", "Something is wrong with filename")
     )
-    // Проверяем, содержит ли текст имя файла "pdf.pdf". Если нет, выбрасывается ошибка с сообщением.
+    // Проверяем, содержит ли текст имя файла "doc.doc". Если нет, выбрасывается ошибка с сообщением.
   })
 })
