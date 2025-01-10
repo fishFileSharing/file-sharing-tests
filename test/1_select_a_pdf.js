@@ -42,7 +42,7 @@ describe("Select a file and check if it's name appears on page", function () {
     // Загружаем указанную веб-страницу в браузере.
 
     await driver.sleep(1000)
-    // Ждем 3 секунды, чтобы страница успела полностью загрузиться.
+    // Ждем 3 секунды, чтобы страница успела полностью загрузитвіься.
 
     let selectFilesInput = await driver.wait(
       until.elementLocated(By.css('[data-testid="select-files-input"]')),
