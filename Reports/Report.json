@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2025-01-09T18:28:04.454Z",
-    "end": "2025-01-09T18:29:15.005Z",
-    "duration": 70551,
+    "start": "2025-01-10T10:06:13.824Z",
+    "end": "2025-01-10T10:07:28.291Z",
+    "duration": 74467,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "be367563-d388-433f-9d35-75f27351ed0e",
+      "uuid": "3ae16d7a-e5d4-4aa5-9162-02001b68a67e",
       "title": "",
       "fullFile": "C:\\Users\\pro32\\Documents\\Проект\\Тестовые данные\\file-sharing-tests\\test\\test1.spec copy.js",
       "file": "\\test\\test1.spec copy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "6c57ff53-14ec-4801-bd66-2897b8bb9d3e",
+          "uuid": "59ae518d-78f9-4c3b-b6b6-f25d3bcafad4",
           "title": "test 1",
           "fullFile": "C:\\Users\\pro32\\Documents\\Проект\\Тестовые данные\\file-sharing-tests\\test\\test1.spec copy.js",
           "file": "\\test\\test1.spec copy.js",
@@ -36,7 +36,7 @@
               "title": "\"before each\" hook in \"test 1\"",
               "fullTitle": "test 1 \"before each\" hook in \"test 1\"",
               "timedOut": false,
-              "duration": 3246,
+              "duration": 6876,
               "state": null,
               "speed": null,
               "pass": false,
@@ -45,8 +45,8 @@
               "context": null,
               "code": "// Создаем экземпляр WebDriver для управления браузером Microsoft Edge.\ndriver = await new Builder().forBrowser('MicrosoftEdge').build();\nvars = {}; // Инициализируем объект для хранения промежуточных данных.\n// Загружаем веб-приложение для тестирования.\nconsole.log(\"Step 1: Opening the test application\");\nawait driver.get(\"https://file-sharing-dev.netlify.app/\");",
               "err": {},
-              "uuid": "8c3cb00d-2717-4784-b3dd-e6b8c07666f5",
-              "parentUUID": "6c57ff53-14ec-4801-bd66-2897b8bb9d3e",
+              "uuid": "d22177a1-c626-44ea-8436-b79069df0a09",
+              "parentUUID": "59ae518d-78f9-4c3b-b6b6-f25d3bcafad4",
               "isHook": true,
               "skipped": false
             }
@@ -56,7 +56,7 @@
               "title": "\"after each\" hook in \"test 1\"",
               "fullTitle": "test 1 \"after each\" hook in \"test 1\"",
               "timedOut": false,
-              "duration": 75,
+              "duration": 73,
               "state": null,
               "speed": null,
               "pass": false,
@@ -65,8 +65,8 @@
               "context": null,
               "code": "// Закрываем браузер и освобождаем ресурсы, связанные с WebDriver.\nif (driver) {\n  await driver.quit();\n}",
               "err": {},
-              "uuid": "1917ca42-3de0-4c2a-9ba7-90015c11321e",
-              "parentUUID": "6c57ff53-14ec-4801-bd66-2897b8bb9d3e",
+              "uuid": "5c0e08f7-fd69-4fca-8e8d-1e527021519e",
+              "parentUUID": "59ae518d-78f9-4c3b-b6b6-f25d3bcafad4",
               "isHook": true,
               "skipped": false
             }
@@ -76,7 +76,7 @@
               "title": "test 1",
               "fullTitle": "test 1 test 1",
               "timedOut": false,
-              "duration": 67225,
+              "duration": 67514,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -85,20 +85,20 @@
               "context": null,
               "code": "// Устанавливаем размеры окна браузера.\nconsole.log(\"Step 2: Resizing browser window\");\nawait driver.manage().window().setRect({ width: 1936, height: 1048 });\nawait driver.sleep(3000); // Ожидание 3 секунды\n// Находим и кликаем на кнопку загрузки файла.\nconsole.log(\"Step 3: Clicking upload button\");\nawait driver.findElement(By.css(\".min-w-fit\")).click();\nawait driver.sleep(3000); // Ожидание 3 секунды\n// Загружаем pdf файл.\nconsole.log(\"Step 4: Uploading the first file\");\nconst firstFilePath = path.join(__dirname, \"..\", \"test_files\", \"1.pdf\");\nawait driver.findElement(By.css(\".border\")).sendKeys(firstFilePath);\nawait driver.sleep(3000); // Ожидание 3 секунды\n// Подтверждаем загрузку первого файла.\nconsole.log(\"Step 5: Confirming the first file upload\");\nawait driver.findElement(By.css(\".min-w-fit\")).click();\nawait driver.sleep(3000); // Ожидание 3 секунды\n// Загружаем JPEG файл.\nconsole.log(\"Step 6: Uploading the second file\");\nconst secondFilePath = path.join(__dirname, \"..\", \"test_files\", \"Full.jpeg\");\nawait driver.findElement(By.css(\".border\")).sendKeys(secondFilePath);\nawait driver.sleep(3000); // Ожидание 3 секунды\n// Подтверждаем загрузку второго файла.\nconsole.log(\"Step 7: Confirming the second file upload\");\nawait driver.findElement(By.css(\".min-w-fit\")).click();\nawait driver.sleep(3000); // Ожидание 3 секунды\n// Загружаем GIF файл.\nconsole.log(\"Step 8: Uploading the third file\");\nconst thirdFilePath = path.join(__dirname, \"..\", \"test_files\", \"response.gif\");\nawait driver.findElement(By.css(\".border\")).sendKeys(thirdFilePath);\nawait driver.sleep(3000); // Ожидание 3 секунды\n// Подтверждаем загрузку третьего файла.\nconsole.log(\"Step 9: Confirming the third file upload\");\nawait driver.findElement(By.css(\".min-w-fit\")).click();\nawait driver.sleep(3000); // Ожидание 3 секунды\n// Загружаем ZIP файл.\nconsole.log(\"Step 10: Uploading the fourth file\");\nconst fourthFilePath = path.join(__dirname, \"..\", \"test_files\", \"ZIP.zip\");\nawait driver.findElement(By.css(\".border\")).sendKeys(fourthFilePath);\nawait driver.sleep(3000); // Ожидание 3 секунды\n// Подтверждаем загрузку четвертого файла.\nconsole.log(\"Step 11: Confirming the fourth file upload\");\nawait driver.findElement(By.css(\".min-w-fit\")).click();\nawait driver.sleep(3000); // Ожидание 3 секунды\n// Загружаем RAR файл.\nconsole.log(\"Step 12: Uploading the fifth file\");\nconst fifthFilePath = path.join(__dirname, \"..\", \"test_files\", \"RAR.rar\");\nawait driver.findElement(By.css(\".border\")).sendKeys(fifthFilePath);\nawait driver.sleep(3000); // Ожидание 3 секунды\n// Подтверждаем загрузку пятого файла.\nconsole.log(\"Step 13: Confirming the fifth file upload\");\nawait driver.findElement(By.css(\".min-w-fit\")).click();\nawait driver.sleep(3000); // Ожидание 3 секунды\n// Загружаем XLSX файл.\nconsole.log(\"Step 14: Uploading the sixth file\");\nconst sixthFilePath = path.join(__dirname, \"..\", \"test_files\", \"Tels.xlsx\");\nawait driver.findElement(By.css(\".border\")).sendKeys(sixthFilePath);\nawait driver.sleep(3000); // Ожидание 3 секунды\n// Подтверждаем загрузку шестого файла.\nconsole.log(\"Step 15: Confirming the sixth file upload\");\nawait driver.findElement(By.css(\".min-w-fit\")).click();\nawait driver.sleep(3000); // Ожидание 3 секунды\n// Загружаем XLS файл.\nconsole.log(\"Step 16: Uploading the seventh file\");\nconst seventhFilePath = path.join(__dirname, \"..\", \"test_files\", \"test1.xls\");\nawait driver.findElement(By.css(\".border\")).sendKeys(seventhFilePath);\nawait driver.sleep(3000); // Ожидание 3 секунды\n// Подтверждаем загрузку седьмого файла.\nconsole.log(\"Step 17: Confirming the seventh file upload\");\nawait driver.findElement(By.css(\".min-w-fit\")).click();\nawait driver.sleep(3000); // Ожидание 3 секунды\n// Загружаем DOCX файл.\nconsole.log(\"Step 18: Uploading the eighth file\");\nconst eighthFilePath = path.join(__dirname, \"..\", \"test_files\", \"test2.docx\");\nawait driver.findElement(By.css(\".border\")).sendKeys(eighthFilePath);\nawait driver.sleep(3000); // Ожидание 3 секунды\n// Подтверждаем загрузку восьмого файла.\nconsole.log(\"Step 19: Confirming the eighth file upload\");\nawait driver.findElement(By.css(\".min-w-fit\")).click();\nawait driver.sleep(3000); // Ожидание 3 секунды\n// Загружаем DOC файл.\nconsole.log(\"Step 20: Uploading the ninth file\");\nconst ninthFilePath = path.join(__dirname, \"..\", \"test_files\", \"doc.doc\");\nawait driver.findElement(By.css(\".border\")).sendKeys(ninthFilePath);\nawait driver.sleep(3000); // Ожидание 3 секунды\n// Подтверждаем загрузку девятого файла.\nconsole.log(\"Step 21: Confirming the ninth file upload\");\nawait driver.findElement(By.css(\".min-w-fit\")).click();\nawait driver.sleep(3000); // Ожидание 3 секунды\n// Загружаем JPG файл.\nconsole.log(\"Step 22: Uploading the tenth file\");\nconst tenthFilePath = path.join(__dirname, \"..\", \"test_files\", \"Нормальный.jpg\");\nawait driver.findElement(By.css(\".border\")).sendKeys(tenthFilePath);\nawait driver.sleep(3000); // Ожидание 3 секунды\n// Подтверждаем загрузку десятого файла.\nconsole.log(\"Step 23: Confirming the tenth file upload\");\nawait driver.findElement(By.css(\".min-w-fit\")).click();\nawait driver.sleep(3000); // Ожидание 3 секунды\n// Завершаем тест.\nconsole.log(\"Step 24: Test completed\");",
               "err": {},
-              "uuid": "960701c0-ef75-4168-9b44-784b13bb0ad1",
-              "parentUUID": "6c57ff53-14ec-4801-bd66-2897b8bb9d3e",
+              "uuid": "d36e3c4e-4d12-46e5-8af3-c7e48a4e9b89",
+              "parentUUID": "59ae518d-78f9-4c3b-b6b6-f25d3bcafad4",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "960701c0-ef75-4168-9b44-784b13bb0ad1"
+            "d36e3c4e-4d12-46e5-8af3-c7e48a4e9b89"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 67225,
+          "duration": 67514,
           "root": false,
           "rootEmpty": false,
           "_timeout": 200000
