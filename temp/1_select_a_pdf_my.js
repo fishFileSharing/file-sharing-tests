@@ -35,7 +35,6 @@ describe("Select a file and check if it's name appears on page", function () {
 
   it("should open https://file-sharing-dev.netlify.app/ and check for title", async function () {
     // Описываем отдельный тест с названием: "Открыть сайт и проверить заголовок".
-    this.timeout(10000)
     // Устанавливаем тайм-аут для теста в 10 секунд.
 
     await driver.get("https://file-sharing-dev.netlify.app/")
